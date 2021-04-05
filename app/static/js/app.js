@@ -7,6 +7,38 @@ const app = Vue.createApp({
   }
 });
 
+
+
+app.component('news-list', {
+  name: 'NewsList',
+  templates:`
+      <news-list>
+          <div class="news">
+          <h2>News</h2>
+            <ul class="news__list">
+              <li class="news__item">News item 1</li>
+              <li class="news__item">News item 2</li>
+              <li class="news__item">News item 3</li>
+            </ul> 
+         </div>
+      </news-list>
+  `
+  created() {
+    fetch('https://newsapi.org/v2/top-headlines?country=us',
+{
+headers: {
+    'Authorization': 'Bearer <>'
+}
+})
+}
+});
+
+
+
+
+
+
+
 app.component('app-header', {
   name: 'AppHeader',
   template: `
