@@ -10,27 +10,31 @@ const app = Vue.createApp({
 
 
 app.component('news-list', {
-  name: 'NewsList',
-  templates:`
-      <news-list>
-          <div class="news">
-          <h2>News</h2>
-            <ul class="news__list">
-              <li class="news__item">News item 1</li>
-              <li class="news__item">News item 2</li>
-              <li class="news__item">News item 3</li>
-            </ul> 
-         </div>
-      </news-list>
-  `
+  name: 'news-list',
+  template: `
+      <div class="news">
+        <h2>News</h2>
+          <ul class="news__list">
+            <li class="news__item">News item 1</li>
+            <li class="news__item">News item 2</li>
+            <li class="news__item">News item 3</li>
+          </ul> 
+  </div>
+  `,
   created() {
     fetch('https://newsapi.org/v2/top-headlines?country=us',
 {
-headers: {
-    'Authorization': 'Bearer <>'
-}
+  headers: {
+    'Authorization': 'Bearer 4c88291110a640418ddfc60c898e90a6'
+  }
 })
-}
+      .then(function(response) {
+      return response.json();
+      })
+      .then(function(data) {
+      console.log(data);
+      });
+  }
 });
 
 
